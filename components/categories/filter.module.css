@@ -1,0 +1,30 @@
+.filterCard{
+    width: 80%;
+    min-height: 40px;
+
+    border-radius: 8px;
+    box-shadow: 0px 5px 5px 2px #5ba4a4;
+}
+
+.categoryContainer{
+    width: 60%;
+    min-height: 30px;
+
+    display: flex;
+}
+
+.clearButton{
+
+}
+
+.categoryTablet{
+
+}
+
+.categoryName{
+
+}
+
+.closeButton{
+
+}

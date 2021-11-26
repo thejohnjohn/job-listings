@@ -1,0 +1,17 @@
+.card{
+    width: 375px;
+    height: 375px;
+}
+
+.logo{
+    width: 30px;
+    height: 30px;
+
+    border-radius: 100%;
+}
+
+.cardInfo{
+    padding: 10px;
+}
+
+
