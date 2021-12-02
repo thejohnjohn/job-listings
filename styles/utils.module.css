@@ -1,4 +1,6 @@
 .headerBg
 {
+    width:  100%;
+    height: calc( 100vw * 0.44 );
     background-color: var(--desaturated-dark-cyan);
 }

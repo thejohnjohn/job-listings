@@ -1,30 +1,44 @@
 import styles from './job.module.css'
-import Image from 'next/image'
 
-const JobCard = ({job}) => {
+const JobCard = ({job, category}) => {
     return(
         <div className={styles.card}>
-            <img 
+            <div className={styles.cardInfo}>
+                <img 
                 className={styles.logo} 
                 src={`${job.logo}`}
-                alt={`A ${job.company} logo`}
-            />
-            <div className={styles.cardInfo}>
-                <p className={styles.company}>{job.company}</p>
-                <p className={styles.isNew}>{job.isNew}</p>
-                <p className={styles.isFeatured}>{job.isFeatured}</p>
-                <h5 className={styles.position}>{job.position}</h5>
-                <p className={styles.workSchedule}>
-                    {job.postedAt} &#8226; {job.contract} &#8226; {job.jobLocation} 
-                </p>
+                alt={`A ${job.company} logo`}/>
+                <div className={styles.description}>
+                    <p className={styles.company}>{job.company}</p>
+                    <p className={styles.isNew}>{job.isNew}</p>
+                    <p className={styles.isFeatured}>{job.isFeatured}</p>
+                    <h5 className={styles.position}>{job.position}</h5>
+                    <p className={styles.workSchedule}>
+                        {job.postedAt} &#8226; {job.contract} &#8226; {job.jobLocation} 
+                    </p>
+                </div>
             </div>
             <hr className={styles.divisionBar} />
             <div className={styles.categories}>
-                {job.languages.map(language => (<p className={styles.category}>{language}</p>))} 
-                {job.tools.map(tool => (<p className={styles.category}>{tool}</p>))}
+                <span className={styles.category} onClick={()=> {category}}>{job.role}</span>
+                <span className={styles.category} onClick={()=> {category}}>{job.level}</span>
+                {job.languages.map(language => (
+                    <span key={language}
+                       className={styles.category} 
+                       onClick={()=> {category}}>
+                        {language}
+                    </span>
+                ))} 
+                {job.tools.map(tool => (
+                    <span key={tool}
+                       className={styles.category} 
+                       onClick={()=> {category}}>
+                        {tool}
+                    </span>
+                ))}
             </div>
         </div>
     );
 }
 
-export default JobCard 
+export default JobCard; 
