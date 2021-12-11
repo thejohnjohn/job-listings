@@ -1,0 +1,45 @@
+.filterCard{
+    position: relative;
+    left: 5%;
+    bottom: 35px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 8px;
+    box-shadow: 0px 5px 5px 2px #5ba4a4;
+    background-color: white;
+}
+
+.categoryContainer{
+    width: 60%;
+    min-height: 30px;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.clearButton{
+    margin-right: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--dark-grayish-cyan);
+}
+
+.clearButton:hover{
+    color: var(--desaturated-dark-cyan);
+    text-decoration: underline;
+}
+
+.filterCard .clearButton{
+    align-self: flex-end;
+}
+
+@media screen and (min-width: 810px){
+    .clearButton{
+        margin-right: 40px;
+    }
+}

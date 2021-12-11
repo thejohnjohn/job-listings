@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-import React from 'react'
+import React, { useState } from 'react'
 
 import JobCard from '../components/job/job'
 import FilterCard from '../components/categories/filter-container'
@@ -23,6 +23,10 @@ export const getServerSideProps = async () => {
   }
 }
 
+const teste = [<Category category={"Frontend"}/>,
+               <Category category={"HTML"}/>,
+               <Category category={"JavaScript"}/>]
+
 export default function Home({jobList}) {
   return (
     <div className={styles.container}>
@@ -33,7 +37,7 @@ export default function Home({jobList}) {
       </Head>    
       <header>
         <img className={utilStyles.headerBg} src="/bg-header-mobile.svg" />
-        <FilterCard categories={<Category category={"teste"}/>} /> 
+        <FilterCard categories={teste} /> 
       </header>
       <main>
          {
