@@ -1,0 +1,6 @@
+{
+  "/api/": "/data",
+  "/api/:id": "/api/:id",
+  "/posts/:category": "/posts?category=:category",
+  "/articles\\?id=:id": "/posts/:id"
+}
