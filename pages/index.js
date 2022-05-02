@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import JobCard from '../components/job/job'
 import FilterCard from '../components/categories/filter-container'
@@ -23,12 +23,11 @@ export const getServerSideProps = async () => {
   }
 }
 
-const teste = [<Category category={"Frontend"}/>,
-               <Category category={"HTML"}/>,
-               <Category category={"JavaScript"}/>]
-
 export default function Home({jobList}) {
-  return (
+   const [tags, setTags] = useState([]);
+   const selectedTags = new Set();
+
+   return (
     <div className={styles.container}>
       <Head>
         <title>Job List - Find your new job</title>
@@ -37,12 +36,20 @@ export default function Home({jobList}) {
       </Head>    
       <header>
         <img className={utilStyles.headerBg} src="/bg-header-mobile.svg" />
-        <FilterCard categories={teste} /> 
+        {tags.length > 0 ? <FilterCard categories={ tags } 
+                    clearSearchPreferences={ () =>setTags([]) } /> : null}
       </header>
       <main>
          {
               jobList.map((job, index) =>{
-                  return(<JobCard key={index} job={job} />)
+                  return(<JobCard key={index} job={job} category={ (tag) => 
+                    { console.log(selectedTags);
+                      !selectedTags.has(tag) ? 
+                        selectedTags.add(tag) &&
+                        setTags((prev) => Array.from(new Set([...prev, <Category key={tag} category={tag} />]))) :
+                        null     
+                    }
+                  } />)
               }) 
           }
       </main>

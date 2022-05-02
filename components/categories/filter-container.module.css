@@ -30,12 +30,14 @@
 }
 
 .clearButton:hover{
+    font-size: 1.0rem;
     color: var(--desaturated-dark-cyan);
-    text-decoration: underline;
+    cursor:pointer;
+    transition: all 1s;
 }
 
 .filterCard .clearButton{
-    align-self: flex-end;
+    align-self: center;
 }
 
 @media screen and (min-width: 810px){

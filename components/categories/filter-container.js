@@ -1,10 +1,8 @@
-import Image from 'next/image';
-
 import styles from './filter-container.module.css';
 
-const FilterCard = ({categories, clearSearchPreferences}) =>{
+const FilterCard = ({show, categories, clearSearchPreferences}) =>{
     return( 
-        <div className={styles.filterCard} 
+        <div style={show} className={styles.filterCard} 
             alt="A card with results of job searches">
                 <div className={styles.categoryContainer}>
                     {categories}

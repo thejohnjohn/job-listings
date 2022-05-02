@@ -20,19 +20,19 @@ const JobCard = ({job, category}) => {
             </div>
             <hr className={styles.divisionBar} />
             <div className={styles.categories}>
-                <span className={styles.category} onClick={()=> {category}}>{job.role}</span>
-                <span className={styles.category} onClick={()=> {category}}>{job.level}</span>
-                {job.languages.map(language => (
+                <span className={styles.category} onClick={category.bind(this, job.role)}>{job.role}</span>
+                <span className={styles.category} onClick={category.bind(this, job.level)}>{job.level}</span>
+                {job.languages?.map(language => (
                     <span key={language}
                        className={styles.category} 
-                       onClick={()=> {category}}>
+                       onClick={category.bind(this, language)}>
                         {language}
                     </span>
                 ))} 
-                {job.tools.map(tool => (
+                {job.tools?.map(tool => (
                     <span key={tool}
                        className={styles.category} 
-                       onClick={()=> {category}}>
+                       onClick={category.bind(this, tool)}>
                         {tool}
                     </span>
                 ))}

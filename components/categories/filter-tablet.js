@@ -2,11 +2,12 @@ import Image from 'next/image';
 
 import styles from './filter-tablet.module.css';
 
-const Category = ({category}) =>{
+const Category = ({ category, remove }) =>{
     return(
         <div className={styles.categoryTablet}>
-            <span className={styles.categoryName}>{category}</span>
-            <button className={styles.closeButton} 
+            <span className={styles.categoryName}>{ category }</span>
+            <button onClick={ remove }
+                    className={styles.closeButton} 
                     alt="Close button. Clearing your search box">
                 <Image
                     src="/icon-remove.svg"
