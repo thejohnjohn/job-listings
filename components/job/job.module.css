@@ -68,6 +68,7 @@
 .category:hover{
     color: white;
     background-color: var(--desaturated-dark-cyan);
+    cursor: pointer;
 }
 
  .cardInfo, .divisionBar, .categories{

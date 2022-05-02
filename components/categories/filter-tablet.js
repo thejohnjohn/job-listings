@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import styles from './filter-tablet.module.css';
 
-const Category = ({ category, remove }) =>{
+const Category = ({  category, remove }) =>{
     return(
         <div className={styles.categoryTablet}>
             <span className={styles.categoryName}>{ category }</span>
