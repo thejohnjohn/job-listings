@@ -1,5 +1,3 @@
-import axios from "axios";
-
 class JobListApi {
     constructor() {
         this.url = "http://localhost:3001/jobs";
@@ -12,17 +10,8 @@ class JobListApi {
         this.parameters.set('tool', new Set());
     }
 
-    async getJobList() {
-        let response;
-
-        await axios(`${this.url}?${this.query}`)
-            .then(res => {
-                response = res.data
-            }).catch(err => {
-                response = err
-            })
-
-        return response
+    getURL() {
+        return `${this.url}?${this.query}`;
     }
 
     setQuery () {
@@ -35,15 +24,32 @@ class JobListApi {
         });
 
         this.query = queryBuilder.join('&');
-        console.log(this.query);
     }
 
     setFilter(role, tag) {
         if(role !== undefined && tag !== undefined) {
-            console.log(`${role} & ${tag}`)
             this.parameters.get(role).add(tag);
             this.setQuery();
+            return `${this.url}?${this.query}`;
         }
+    }
+
+    removeQuery(tag) {
+        this.parameters.forEach((value, key) => {
+            this.parameters.get(key).delete(tag);
+        });
+
+        this.setQuery();
+        return `${this.url}?${this.query}`;
+    }
+
+    clearFilters() {
+        this.parameters.get('role').clear();
+        this.parameters.get('level').clear();
+        this.parameters.get('languages').clear();
+        this.parameters.get('tool').clear();
+
+        this.query = "";
     }
 }
 

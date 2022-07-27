@@ -1,6 +1,6 @@
 import styles from './job.module.css'
 
-const JobCard = ({job, category}) => {
+const JobCard = ({reference, job, category}) => {
     return(
         <div className={styles.card}>
             <div className={styles.cardInfo}>
@@ -20,19 +20,21 @@ const JobCard = ({job, category}) => {
             </div>
             <hr className={styles.divisionBar} />
             <div className={styles.categories}>
-                <span className={styles.category} onClick={category.bind(this, job.role)}>{job.role}</span>
-                <span className={styles.category} onClick={category.bind(this, job.level)}>{job.level}</span>
+                <span className={styles.category} data-role={job.role} onClick={category.bind(this, 'role', job.role)}>{job.role}</span>
+                <span className={styles.category} data-level={job.level} onClick={category.bind(this, 'level', job.level)}>{job.level}</span>
                 {job.languages?.map(language => (
                     <span key={language}
-                       className={styles.category} 
-                       onClick={category.bind(this, language)}>
+                        data-languages={language}
+                        className={styles.category} 
+                        onClick={category.bind(this, 'languages', language)}>
                         {language}
                     </span>
                 ))} 
                 {job.tools?.map(tool => (
                     <span key={tool}
-                       className={styles.category} 
-                       onClick={category.bind(this, tool)}>
+                        data-tool={tool}
+                        className={styles.category} 
+                        onClick={category.bind(this, 'tool', tool)}>
                         {tool}
                     </span>
                 ))}

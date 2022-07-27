@@ -1,6 +1,7 @@
 {
   "name": "static-job-listings-master",
   "private": true,
+  "version": "0.1.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
