@@ -1,6 +1,6 @@
 import Head from 'next/head'
-
 import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 
 import JobCard from '../components/job/job'
 import FilterCard from '../components/categories/filter-container'
@@ -9,17 +9,18 @@ import styles from '../styles/Home.module.css'
 import utilStyles from '../styles/utils.module.css'
 
 import JobListAPI from '../services/JobListAPI'
-import axios from 'axios';
 
+const justTest = `http://localhost:3000/api/joblist?languages=JavaScript&tools=React`;
 export default function Home() {
+
 	const [addr, setAddr] = useState(JobListAPI.getURL());
 	const [jobs, setJobs] = useState([]);
 	const [tags, setTags] = useState([]);
 
 	useEffect(async () => {
-		await axios(addr)
+		await axios(justTest)
             .then(res => {
-                setJobs(res.data)
+                setJobs(res.data.jobs)
             }).catch(err => {
                 console.log(err);
             })
@@ -33,7 +34,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon32.png" />
 			</Head>    
 			<header>
-			<img className={utilStyles.headerBg} src="/bg-header-mobile.svg" />
+			<div className={utilStyles.headerBg}/>
 			{
 				tags.length > 0 ? 
 					<FilterCard 
@@ -59,6 +60,7 @@ export default function Home() {
 								 category={ (role, tag) => {
 										setTags(Array.from(new Set([...tags, tag]))); 	
 										setAddr(JobListAPI.setFilter(role, tag));
+										console.log(JobListAPI.getURL());
 									}
 								 }
 						/>

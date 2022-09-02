@@ -34,7 +34,7 @@ const JobCard = ({reference, job, category}) => {
                     <span key={tool}
                         data-tool={tool}
                         className={styles.category} 
-                        onClick={category.bind(this, 'tool', tool)}>
+                        onClick={category.bind(this, 'tools', tool)}>
                         {tool}
                     </span>
                 ))}

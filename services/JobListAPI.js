@@ -7,7 +7,7 @@ class JobListApi {
         this.parameters.set('role', new Set());
         this.parameters.set('level', new Set());
         this.parameters.set('languages', new Set());
-        this.parameters.set('tool', new Set());
+        this.parameters.set('tools', new Set());
     }
 
     getURL() {
