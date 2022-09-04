@@ -196,24 +196,25 @@ const jobs = [
       }
 ];
 
-const jobListFilter = (jobTags = { languages: 'JavaScript', tools: 'React,Sass' }) => {
+const jobListFilter = (jobTags) => {
     let keys = Object.keys(jobTags);
-    let listFiltered = [];
+    let listFiltered = jobs;
     
-    keys.map((jobTag) => {
+    keys.forEach((jobTag) => {
         jobTags[jobTag] = jobTags[jobTag].split(',');
     });
 
-    jobs.map( (job) => {
-        keys.map( (key) => {
-            console.log(key);
-            /*jobs[key].map( (value) => {
-                console.log(value)
-            });*/
+    let mapFilter = new Map(Object.entries(jobTags));
+
+    mapFilter.forEach((values, key) => {
+        values.forEach((value) =>{
+            listFiltered = listFiltered.filter((job) => {
+                return(job[key].includes(value))
+            });
         });
-    });
+    })
+
+    return listFiltered;
 }
 
-jobListFilter();
-
-//export default jobListFilter;
+export default jobListFilter;
